@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VR Space</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+
+  <script src="node_modules/aframe/dist/aframe-master.js" charset="utf-8"></script>
+  <script src="node_modules/aframe-physics-components/dist/aframe-physics-components.min.js" charset="utf-8"></script>
+</head>
+<body>
+
+  <a-scene physics-world="gravity: 0 -9.8 0">
+
+    <a-sky color="#ECECEC"></a-sky>
+
+    <a-entity id="ground"
+                geometry="primitive: box; depth: 50; height: 0.1; width: 50"
+                material="color: #2E3837"
+physics-body="mass: 0; boundingBox: 50 0.1 50" position="0 0 0"></a-entity>
+
+    <a-box color="blue" depth="1.5" height="1.5" width="1.5" position="-2 0.5 -3" physics-body="mass: 5; boundingBox: 1 1 1"></a-box>
+    <a-box color="yellow" depth="1.7" height="1.7" width="1.7" position="2 0.5 -3" physics-body="mass: 5; boundingBox: 1 1 1"></a-box>
+
+    <a-entity id="player" camera look-controls wasd-physics-controls physics-body="mass: 100; boundingBox: 1 1.8 1" position="0 5 0"></a-entity>
+  </a-scene>
+
+  <script src="scripts/collision.js" charset="utf-8"></script>
+</body>
+</html>

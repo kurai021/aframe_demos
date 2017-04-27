@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>360 Image Demo</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+
+  <script src="node_modules/aframe/dist/aframe-master.js" charset="utf-8"></script>
+  <script src="node_modules/aframe-animation-component/dist/aframe-animation-component.min.js"></script>
+  <script src="node_modules/aframe-event-set-component/dist/aframe-event-set-component.min.js"></script>
+  <script src="node_modules/aframe-layout-component/dist/aframe-layout-component.min.js"></script>
+  <script src="node_modules/aframe-template-component/dist/aframe-template-component.min.js"></script>
+
+  <script src="scripts/360_image.js" charset="utf-8"></script>
+</head>
+<body>
+  <a-scene>
+
+    <a-assets>
+      <img id="world_1" crossorigin="anonymous" src="images/360_images/world_1.jpeg" alt="">
+      <img id="world_2" crossorigin="anonymous" src="images/360_images/world_2.jpeg" alt="">
+      <img id="world_3" crossorigin="anonymous" src="images/360_images/world_3.jpeg" alt="">
+
+      <img id="world1-thumb" crossorigin="anonymous" src="images/360_images/world1_thumb.png" alt="">
+      <img id="world2-thumb" crossorigin="anonymous" src="images/360_images/world2_thumb.png" alt="">
+      <img id="world3-thumb" crossorigin="anonymous" src="images/360_images/world3_thumb.png" alt="">
+
+      <!-- Image link template to be reused. -->
+       <script id="link" type="text/html">
+         <a-entity class="link"
+           geometry="primitive: plane; height: 1; width: 1"
+           material="shader: flat; src: ${thumb}"
+           event-set__1="_event: mousedown; scale: 1 1 1"
+           event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+           set-image="on: click; target: #image-360; src: ${src}"
+           ></a-entity>
+       </script>
+     </a-assets>
+
+    <a-sky id="image-360" radius="10" src="#world_1"></a-sky>
+
+    <!-- Image links. -->
+    <a-entity id="link-1" layout="type: line; margin: 1.5" position="0 1 -2">
+      <a-entity template="src: #link" data-src="#world_1" data-thumb="#world1-thumb"></a-entity>
+    </a-entity>
+
+    <!-- Image links. -->
+    <a-entity id="link-2" layout="type: line; margin: 1.5" position="2 0 0" rotation="0 -90 0">
+      <a-entity template="src: #link" data-src="#world_2" data-thumb="#world2-thumb"></a-entity>
+    </a-entity>
+
+    <!-- Image links. -->
+    <a-entity id="link-3" layout="type: line; margin: 1.5" position="-2 0 0" rotation="0 90 0">
+      <a-entity template="src: #link" data-src="#world_3" data-thumb="#world3-thumb"></a-entity>
+    </a-entity>
+
+    <a-entity camera look-controls>
+      <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150" color="green"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: red"
+          event-set__2="_event: mouseleave; color: green"
+          fuse="true"
+          raycaster="objects: .link">
+      </a-cursor>
+    </a-entity>
+
+  </a-scene>
+</body>
+</html>

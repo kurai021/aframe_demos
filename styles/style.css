@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#controller {
+  position: fixed;
+  top: 10px;
+  width:inherit;
+  text-align: center;
+  z-index: 1;
+}
