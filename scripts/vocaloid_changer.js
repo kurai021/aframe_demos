@@ -33,7 +33,7 @@ AFRAME.registerComponent('vocaloid', {
         self.el.append(music);
 
         model = document.createElement("a-entity");
-        model.setAttribute('mmd-model', 'model:/images/rin/rin_2.pmx;vmd:images/rin/Rin_Migikata_no_chou.vmd;');
+        model.setAttribute('mmd-model', 'model:/images/rin/rin_2.pmd;vmd:images/rin/Rin_Migikata_no_chou.vmd;');
         model.setAttribute('shadow', 'cast:true');
         music.append(model);
 
