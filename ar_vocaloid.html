@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AR Miku</title>
+  <title>AR Vocaloid</title>
 
   <link rel="stylesheet" href="styles/style.css">
 
@@ -14,7 +14,7 @@
   <script src="node_modules/aframe-outline/build/aframe-outline.js" charset="utf-8"></script>
   <script src="node_modules/a-mmd/build/a-mmd.js" charset="utf-8"></script>
 
-  <script src="node_modules/ar.js/aframe/build/aframe-ar.min.js" charset="utf-8"></script>
+  <script src="node_modules/ar.js/aframe/build/aframe-ar.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -30,7 +30,7 @@
 
   <script src="scripts/vocaloid_changer.js" charset="utf-8"></script>
 
-  <a-scene outline embedded ar-toolkit="sourceType: webcam;">
+  <a-scene stats embedded ar-toolkit="sourceType: webcam;">
 
     <a-entity vocaloid scale="0.08 0.08 0.08">
 
