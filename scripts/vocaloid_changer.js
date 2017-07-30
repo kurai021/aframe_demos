@@ -19,7 +19,7 @@ AFRAME.registerComponent('vocaloid', {
         self.el.append(music);
 
         model = document.createElement("a-entity");
-        model.setAttribute('mmd-model', 'model:/images/miku/miku_v3.pmx;vmd:/images/miku/world_is_mine.vmd;');
+        model.setAttribute('mmd-model', 'model:/images/alt_miku/alt_miku.pmx;vmd:/images/miku/world_is_mine.vmd;');
         model.setAttribute('shadow', 'cast:true');
         music.append(model);
 
@@ -90,7 +90,7 @@ AFRAME.registerComponent('vocaloid', {
         music.append(model2);
 
         model3 = document.createElement("a-entity");
-        model3.setAttribute('mmd-model', 'model:/images/miku/miku_v3.pmx; vmd:images/kaito/Tda_L.vmd;');
+        model3.setAttribute('mmd-model', 'model:/images/alt_miku/alt_miku.pmx; vmd:images/kaito/Tda_L.vmd;');
         model3.setAttribute('shadow', 'cast:true');
         music.append(model3);
 
