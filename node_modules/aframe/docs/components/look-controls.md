@@ -3,6 +3,7 @@ title: look-controls
 type: components
 layout: docs
 parent_section: components
+source_code: src/components/look-controls.js
 ---
 
 The look-controls component:

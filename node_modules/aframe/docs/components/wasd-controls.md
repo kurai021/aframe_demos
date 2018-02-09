@@ -3,6 +3,7 @@ title: wasd-controls
 type: components
 layout: docs
 parent_section: components
+source_code: src/components/wasd-controls.js
 ---
 
 [components-camera]: ./camera.md

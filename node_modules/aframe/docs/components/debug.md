@@ -3,6 +3,7 @@ title: debug
 type: components
 layout: docs
 parent_section: components
+source_code: src/components/scene/debug.js
 ---
 
 The debug component enables component-to-DOM serialization.

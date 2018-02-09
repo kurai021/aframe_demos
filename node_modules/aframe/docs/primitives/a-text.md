@@ -3,6 +3,7 @@ title: <a-text>
 type: primitives
 layout: docs
 parent_section: primitives
+source_code: src/extras/primitives/primitives/a-text.js
 ---
 
 [text]: ../components/text.md
@@ -40,3 +41,11 @@ Wraps the [text component][text].
 | wrap-count     | text.wrapCount     |
 | wrap-pixels    | text.wrapPixels    |
 | z-offset       | text.zOffset       |
+
+## Limitations
+
+To interact with the text via raycaster or cursor, we need to add geometry like a plane to the text.
+
+```html
+<a-text value="Now Interactable" geometry="primitive:plane"></a-text>
+```

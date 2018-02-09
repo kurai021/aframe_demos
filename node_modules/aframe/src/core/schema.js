@@ -1,5 +1,10 @@
-var debug = require('../utils/debug');
-var propertyTypes = require('./propertyTypes').propertyTypes;
+var utils = require('../utils/');
+var PropertyTypes = require('./propertyTypes');
+
+var debug = utils.debug;
+var isValidDefaultValue = PropertyTypes.isValidDefaultValue;
+var propertyTypes = PropertyTypes.propertyTypes;
+
 var warn = debug('core:schema:warn');
 
 /**
@@ -20,25 +25,29 @@ module.exports.isSingleProperty = isSingleProperty;
  * Build step to schema to use `type` to inject default value, parser, and stringifier.
  *
  * @param {object} schema
+ * @param {string} componentName
  * @returns {object} Schema.
  */
-module.exports.process = function (schema) {
+module.exports.process = function (schema, componentName) {
   // For single property schema, run processPropDefinition over the whole schema.
   if (isSingleProperty(schema)) {
-    return processPropertyDefinition(schema);
+    return processPropertyDefinition(schema, componentName);
   }
 
   // For multi-property schema, run processPropDefinition over each property definition.
   Object.keys(schema).forEach(function (propName) {
-    schema[propName] = processPropertyDefinition(schema[propName]);
+    schema[propName] = processPropertyDefinition(schema[propName], componentName);
   });
   return schema;
 };
 
 /**
  * Inject default value, parser, stringifier for single property.
+ *
+ * @param {object} propDefinition
+ * @param {string} componentName
  */
-function processPropertyDefinition (propDefinition) {
+function processPropertyDefinition (propDefinition, componentName) {
   var defaultVal = propDefinition.default;
   var propType;
   var typeName = propDefinition.type;
@@ -62,7 +71,7 @@ function processPropertyDefinition (propDefinition) {
 
   propType = propertyTypes[typeName];
   if (!propType) {
-    warn('Unknown property type: ' + typeName);
+    warn('Unknown property type for component `' + componentName + '`: ' + typeName);
   }
 
   // Fill in parse and stringify using property types.
@@ -72,8 +81,15 @@ function processPropertyDefinition (propDefinition) {
   // Fill in type name.
   propDefinition.type = typeName;
 
-  // Fill in default value.
-  if (!('default' in propDefinition)) {
+  // Check that default value exists.
+  if ('default' in propDefinition) {
+    // Check that default values are valid.
+    if (!isValidDefaultValue(typeName, defaultVal)) {
+      warn('Default value `' + defaultVal + '` does not match type `' + typeName +
+           '` in component `' + componentName + '`');
+    }
+  } else {
+    // Fill in default value.
     propDefinition.default = propType.default;
   }
 
@@ -122,6 +138,7 @@ function parseProperty (value, propDefinition) {
   // Use default value if value is falsy.
   if (value === undefined || value === null || value === '') {
     value = propDefinition.default;
+    if (Array.isArray(value)) { value = value.slice(); }
   }
   // Invoke property type parser.
   return propDefinition.parse(value, propDefinition.default);

@@ -1,4 +1,24 @@
-import { TextureMapping, TextureWrapping, TextureFilter } from '../constants';
+import {
+	UVMapping,
+	CubeReflectionMapping,
+	CubeRefractionMapping,
+	EquirectangularReflectionMapping,
+	EquirectangularRefractionMapping,
+	SphericalReflectionMapping,
+	CubeUVReflectionMapping,
+	CubeUVRefractionMapping,
+
+	RepeatWrapping,
+	ClampToEdgeWrapping,
+	MirroredRepeatWrapping,
+
+	NearestFilter,
+	NearestMipMapNearestFilter,
+	NearestMipMapLinearFilter,
+	LinearFilter,
+	LinearMipMapNearestFilter,
+	LinearMipMapLinearFilter
+} from '../constants';
 import { Color } from '../math/Color';
 import { Matrix4 } from '../math/Matrix4';
 import { Object3D } from '../core/Object3D';
@@ -64,7 +84,10 @@ Object.assign( ObjectLoader.prototype, {
 
 			} catch ( error ) {
 
+				if ( onError !== undefined ) onError( error );
+
 				console.error( 'THREE:ObjectLoader: Can\'t parse ' + url + '.', error.message );
+
 				return;
 
 			}
@@ -409,6 +432,32 @@ Object.assign( ObjectLoader.prototype, {
 	},
 
 	parseTextures: function ( json, images ) {
+
+		var TextureMapping = {
+			UVMapping: UVMapping,
+			CubeReflectionMapping: CubeReflectionMapping,
+			CubeRefractionMapping: CubeRefractionMapping,
+			EquirectangularReflectionMapping: EquirectangularReflectionMapping,
+			EquirectangularRefractionMapping: EquirectangularRefractionMapping,
+			SphericalReflectionMapping: SphericalReflectionMapping,
+			CubeUVReflectionMapping: CubeUVReflectionMapping,
+			CubeUVRefractionMapping: CubeUVRefractionMapping
+		};
+
+		var TextureWrapping = {
+			RepeatWrapping: RepeatWrapping,
+			ClampToEdgeWrapping: ClampToEdgeWrapping,
+			MirroredRepeatWrapping: MirroredRepeatWrapping
+		};
+
+		var TextureFilter = {
+			NearestFilter: NearestFilter,
+			NearestMipMapNearestFilter: NearestMipMapNearestFilter,
+			NearestMipMapLinearFilter: NearestMipMapLinearFilter,
+			LinearFilter: LinearFilter,
+			LinearMipMapNearestFilter: LinearMipMapNearestFilter,
+			LinearMipMapLinearFilter: LinearMipMapLinearFilter
+		};
 
 		function parseConstant( value, type ) {
 
