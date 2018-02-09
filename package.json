@@ -14,8 +14,10 @@
     "aframe-physics-components": "^1.1.0",
     "aframe-template-component": "^3.2.1",
     "ammo.js": "0.0.10",
-    "ar.js": "git+https://github.com/jeromeetienne/AR.js.git",
+    "ar.js": "1.4.10",
     "connect": "^3.6.1",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "jquery": "^3.2.1",
     "serve-static": "^1.12.1"
   },
