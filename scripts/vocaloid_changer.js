@@ -19,7 +19,7 @@ AFRAME.registerComponent('vocaloid', {
         self.el.append(music);
 
         model = document.createElement("a-entity");
-        model.setAttribute('mmd-model', 'model:images/alt_miku/alt_miku.pmx;vmd:/images/miku/world_is_mine.vmd;');
+        model.setAttribute('mmd-model', 'model:images/alt_miku/alt_miku.pmx;vmd:/images/alt_miku/world_is_mine.vmd;');
         model.setAttribute('shadow', 'cast:true');
         music.append(model);
 
