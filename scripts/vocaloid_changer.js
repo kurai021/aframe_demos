@@ -15,7 +15,7 @@ AFRAME.registerComponent('vocaloid', {
         $('a-entity[mmd]').remove();
 
         music = document.createElement("a-entity");
-        music.setAttribute('mmd', 'audio:images/vocaloid_songs/world_is_mine.mp3; audioDelayTime:5.333333333333333; afterglow:2.0;');
+        music.setAttribute('mmd', 'audio:images/vocaloid_songs/world_is_mine.mp3; afterglow:2.0;');
         self.el.append(music);
 
         model = document.createElement("a-entity");
@@ -29,7 +29,7 @@ AFRAME.registerComponent('vocaloid', {
         $('a-entity[mmd]').remove();
 
         music = document.createElement("a-entity");
-        music.setAttribute('mmd', 'audio:images/vocaloid_songs/migikata_no_chou.mp3; audioDelayTime:5.333333333333333; afterglow:2.0;');
+        music.setAttribute('mmd', 'audio:images/vocaloid_songs/migikata_no_chou.mp3; afterglow:2.0;');
         self.el.append(music);
 
         model = document.createElement("a-entity");
@@ -48,7 +48,7 @@ AFRAME.registerComponent('vocaloid', {
         $('a-entity[mmd]').remove();
 
         music = document.createElement("a-entity");
-        music.setAttribute('mmd', 'audio:images/vocaloid_songs/night_fever.mp3; audioDelayTime:5.333333333333333; afterglow:2.0;');
+        music.setAttribute('mmd', 'audio:images/vocaloid_songs/night_fever.mp3; afterglow:2.0;');
         self.el.append(music);
 
         model = document.createElement("a-entity");
@@ -62,7 +62,7 @@ AFRAME.registerComponent('vocaloid', {
         $('a-entity[mmd]').remove();
 
         music = document.createElement("a-entity");
-        music.setAttribute('mmd', 'audio:images/vocaloid_songs/nostalgic.mp3; audioDelayTime:5.333333333333333; afterglow:2.0;');
+        music.setAttribute('mmd', 'audio:images/vocaloid_songs/nostalgic.mp3; afterglow:2.0;');
         self.el.append(music);
 
         model = document.createElement("a-entity");
@@ -76,7 +76,7 @@ AFRAME.registerComponent('vocaloid', {
         $('a-entity[mmd]').remove();
 
         music = document.createElement("a-entity");
-        music.setAttribute('mmd', 'audio:images/vocaloid_songs/wave.mp3; audioDelayTime:5.333333333333333; afterglow:2.0;');
+        music.setAttribute('mmd', 'audio:images/vocaloid_songs/wave.mp3; afterglow:2.0;');
         self.el.append(music);
 
         model = document.createElement("a-entity");
